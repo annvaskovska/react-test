@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './conponents/App';
-import AboutPage from './conponents/about/AboutPage';
-import CoursesPage from './conponents/course/CoursesPage';
-import ManageCoursePage from './conponents/course/ManageCoursePage';
-import ApplicationsPage from './conponents/applications/ApplicationsPage';
-import MonitoringPage from './conponents/monitoring/MonitoringPage';
-import ReportingPage from './conponents/reporting/ReportingPage';
-import UnmanagedBuckets from './conponents/unmanaged-buckets/UnmanagedBuckets';
-import SettingsPage from './conponents/settings/SettingsPage';
+import App from './components/App';
+import AboutPage from './components/about/AboutPage';
+import CoursesPage from './components/course/CoursesPage';
+import ManageCoursePage from './components/course/ManageCoursePage';
+import ApplicationsPage from './components/applications/ApplicationsPage';
+import MonitoringPage from './components/monitoring/MonitoringPage';
+import ReportingPage from './components/reporting/ReportingPage';
+import UnmanagedBuckets from './components/unmanaged-buckets/UnmanagedBuckets';
+import SettingsPage from './components/settings/SettingsPage';
 
 export default (
   <Route path="/" component={App}>
