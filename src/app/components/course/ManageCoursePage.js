@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as coursesActions from '../../actions/courseActions';
+import * as coursesActions from '../../../redux/actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
 
 class ManageCoursePage extends React.Component {
-  constructor(props, context) {
+    constructor(props, context) {
     super(props, context);
 
     this.state = {

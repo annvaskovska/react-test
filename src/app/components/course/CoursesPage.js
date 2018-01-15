@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as coursesActions from '../../actions/courseActions';
+import * as coursesActions from '../../../redux/actions/courseActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
 
