@@ -14,6 +14,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={ApplicationsPage}/>
     <Route path="applications" component={ApplicationsPage}/>
+    <Route path="applications/:id" component={ApplicationsPage}/>
     <Route path="monitoring" component={MonitoringPage}/>
     <Route path="reporting" component={ReportingPage}/>
     <Route path="unmanaged-buckets" component={UnmanagedBuckets}/>

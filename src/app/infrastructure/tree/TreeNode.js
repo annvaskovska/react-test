@@ -1,17 +1,16 @@
 import React, {PropTypes} from 'react';
-//import {Link} from 'react-router';
-//<td><Link to={'/course/' + course.id}>{course.title}</Link></td>
+import {Link} from 'react-router';
 
-const CourseListRow = ({node}) => {
+const TreeNode = ({node}) => {
   return (
    <div>
-     {node.name}
+     <Link to={'/applications/' + node.id}>{node.name}</Link>
    </div>
   );
 };
 
-CourseListRow.propTypes = {
+TreeNode.propTypes = {
   node: PropTypes.object.isRequired
 };
 
-export default CourseListRow;
+export default TreeNode;
