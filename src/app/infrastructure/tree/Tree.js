@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import TreeNode from './TreeNode';
 import {Link} from 'react-router-dom';
 
 const Tree = ({treeModel, onSelect}) => {
@@ -9,9 +8,9 @@ const Tree = ({treeModel, onSelect}) => {
       {
         treeModel.map((node) => {
           return (
-            <div key={node.id}>
+            <h4 key={node.id} style={{paddingLeft: node.level * 8}}>
               <Link to={'/applications/' + node.id} onClick={onSelect.bind(null, node)}>{node.name}</Link>
-            </div>
+            </h4>
           );
         })
       }

@@ -27,7 +27,12 @@ class NodeContent extends React.Component {
   }
 
   onSave (nodeName) {
-    this.props.actions.saveNode({name: nodeName})
+    this.props.actions.saveNode({
+      name: nodeName,
+      level: this.state.nodeInfo.level,
+      parentName: this.state.nodeInfo.name,
+      parentLevel: this.state.nodeInfo.level
+    })
       .then(() => {
         this.context.router.history.goBack();
       });
@@ -42,9 +47,25 @@ class NodeContent extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.state.nodeInfo.name}</p>
-        <Link to={`${this.props.match.url}/create-bucket`}>Create Bucket</Link>
-        <Link to={`${this.props.match.url}/create-node`}>Create Node</Link>
+        <div className="row">
+          <div className="col-md-5">
+            <h4><b>{this.props.nodeInfo.name}</b></h4>
+          </div>
+          <div className="col-md-7">
+              <Link to={`${this.props.match.url}/create-bucket`}
+                    className="btn btn-primary btn-sm pull-right"
+                    disabled={this.props.nodeInfo.level < 3}>
+                Create Bucket
+              </Link>
+              <Link to={`${this.props.match.url}/create-node`}
+                    className="btn btn-primary btn-sm pull-right"
+                    disabled={this.props.nodeInfo.level == 3}>
+                Create Node
+              </Link>
+          </div>
+
+        </div>
+
         <div>
           <Route path={`${this.props.match.url}/create-bucket`} component={CreateBucket}/>
           <Route path={`${this.props.match.url}/create-node`} render={(props) =>

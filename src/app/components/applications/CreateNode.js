@@ -36,7 +36,7 @@ class CreateNode extends React.Component {
     return (
       <form>
         <div>
-          <h3>{`You are creating NODE for parent ${this.props.nodeInfo.name}`}</h3>
+          <p>{`You are creating NODE for ${this.props.nodeInfo.name}`}</p>
           <TextInput
             name="nodeName"
             title="Name"

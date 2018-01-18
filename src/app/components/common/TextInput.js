@@ -2,19 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SelectInput = ({name, label, placeholder, onChange, value, error}) => {
-  let wrapperClass = 'form-group';
-  if (error && error.length) {
-    wrapperClass += " has-errors";
-  }
-
   return (
-    <div className={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
-      <div className="field">
+    <div className="form-group row">
+      <label htmlFor={name} className="col-sm-1 col-form-label">{label}</label>
+      <div className="col-sm-10">
         <input
           name={name}
           type="text"
-          className="form-control"
           placeholder={placeholder}
           value={value}
           onChange={onChange}

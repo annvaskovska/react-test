@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import delay from './delay';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -95,7 +96,8 @@ class TreeApi {
           //Just simulating creation here.
           //The server would generate ids and watchHref's for new tree in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
-          node.id = tree.length + 1;
+          node.id = _.random(1000).toString();
+          node.level = Number(node.parentLevel) + 1;
 
           tree.push(node);
         }

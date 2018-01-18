@@ -6,13 +6,9 @@ const Header = ({loading}) => {
   return (
     <nav>
       <Link to="/">Applications</Link>
-      {" | "}
       <Link to="/monitoring">Monitoring</Link>
-      {" | "}
       <Link to="/reporting">Reporting</Link>
-      {" | "}
       <Link to="/unmanaged-buckets">Unmanaged Buckets</Link>
-      {" | "}
       <Link to="/settings">Settings</Link>
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>
