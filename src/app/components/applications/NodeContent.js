@@ -6,6 +6,7 @@ import {Route, Link, withRouter} from 'react-router-dom';
 import CreateNode from './CreateNode';
 import CreateBucket from './CreateBucket';
 import * as treeActions from '../../../redux/actions/treeActions';
+import _ from 'lodash';
 
 class NodeContent extends React.Component {
   constructor(props, context) {
@@ -70,8 +71,15 @@ NodeContent.contextTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  const selectedNodeId = ownProps.match.params.id;
+  let selectedNode = state.tree.selectedNode;
+
+  if (_.isEmpty(selectedNode) && !_.isEmpty(selectedNodeId) && state.tree.tree.length > 0) {
+    selectedNode = _.find(state.tree.tree, {id: selectedNodeId});
+  }
+
   return {
-    nodeInfo: state.tree.selectedNode
+    nodeInfo: selectedNode
   };
 }
 
