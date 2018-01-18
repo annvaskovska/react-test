@@ -1,18 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextInput from '../common/TextInput';
 
-const CreateNode = ({parentNode}) => {
+//import {Link} from 'react-router-dom';
+
+class CreateNode extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      newNodeName: ''
+    };
+    this.onChange = this.onChange.bind(this);
+    this.save = this.save.bind(this);
+  }
+
+  onChange(event) {
+    this.setState({
+      newNodeName: event.target.value
+    });
+  }
+
+  save(event) {
+    event.preventDefault();
+    this.props.onSave(this.state.newNodeName);
+    this.props.history.goBack();
+  }
+
+  cancel(event) {
+    event.preventDefault();
+    this.props.history.goBack();
+  }
+
+  render() {
     return (
-      <div>
-        <div>{parentNode}</div>
-        <div>BLA BLA BLA BLA BLA BLA BLA BLA BLA</div>
-      </div>
+      <form>
+        <div>
+          <h3>{`You are creating NODE for parent ${this.props.nodeInfo.name}`}</h3>
+          <TextInput
+            name="nodeName"
+            title="Name"
+            label="Name"
+            value={this.state.newNodeName}
+            onChange={this.onChange}
+          />
+        </div>
+
+        <button className="btn btn-sm btn-success" onClick={this.save}>Save</button>
+        <button className="btn btn-sm btn-warning" onClick={this.cancel}>Cancel</button>
+      </form>
     );
-};
+  }
+}
 
 
 CreateNode.propTypes = {
-  parentNode: PropTypes.object
+  history: PropTypes.object,
+  nodeInfo: PropTypes.object,
+  onSave: PropTypes.func.isRequired
 };
 
 export default CreateNode;

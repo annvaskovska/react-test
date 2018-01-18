@@ -16,6 +16,13 @@ export function selectNode(node) {
   };
 }
 
+export function saveNodeSuccess(node) {
+  return {
+    type: types.SAVE_NODE_SUCCESS,
+    node
+  };
+}
+
 export function loadTree() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
@@ -28,12 +35,13 @@ export function loadTree() {
   };
 }
 
-// export function selectNode() {
-//   return function (dispatch) {
-//     return treeApi.getTree().then(courses => {
-//       dispatch(loadTreeSuccess(courses));
-//     }).catch(error => {
-//       throw(error);
-//     });
-//   };
-// }
+export function saveNode (node) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    return treeApi.saveNode(node).then((node) => dispatch(saveNodeSuccess(node)))
+      .catch((error) => {
+      dispatch(ajaxCallError());
+      throw(error);
+    });
+  };
+}

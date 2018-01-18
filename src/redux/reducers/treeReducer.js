@@ -13,6 +13,11 @@ export default function treeReducer (state = initialState.applications, action) 
         selectedNode: action.node,
         tree: state.tree
       };
+    case types.SAVE_NODE_SUCCESS:
+      return {
+        selectedNode: action.node,
+        tree: [ ...state.tree, Object.assign({}, action.node) ]
+      };
 
     default:
       return state;

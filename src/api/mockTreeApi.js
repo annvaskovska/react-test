@@ -78,32 +78,32 @@ class TreeApi {
     });
   }
 
-  // static saveCourse(course) {
-  //   course = Object.assign({}, course); // to avoid manipulating object passed in.
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       // Simulate server-side validation
-  //       const minCourseTitleLength = 1;
-  //       if (course.title.length < minCourseTitleLength) {
-  //         reject(`Title must be at least ${minCourseTitleLength} characters.`);
-  //       }
-  //
-  //       if (course.id) {
-  //         const existingCourseIndex = courses.findIndex(a => a.id == course.id);
-  //         courses.splice(existingCourseIndex, 1, course);
-  //       } else {
-  //         //Just simulating creation here.
-  //         //The server would generate ids and watchHref's for new courses in a real app.
-  //         //Cloning so copy returned is passed by value rather than by reference.
-  //         course.id = generateId(course);
-  //         course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
-  //         courses.push(course);
-  //       }
-  //
-  //       resolve(course);
-  //     }, delay);
-  //   });
-  // }
+  static saveNode(node) {
+    node = Object.assign({}, node); // to avoid manipulating object passed in.
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Simulate server-side validation
+        const minCourseTitleLength = 1;
+        if (node.name.length < minCourseTitleLength) {
+          reject(`Title must be at least ${minCourseTitleLength} characters.`);
+        }
+
+        if (node.id) {
+          const existingCourseIndex = tree.findIndex(a => a.id == node.id);
+          tree.splice(existingCourseIndex, 1, node);
+        } else {
+          //Just simulating creation here.
+          //The server would generate ids and watchHref's for new tree in a real app.
+          //Cloning so copy returned is passed by value rather than by reference.
+          node.id = tree.length + 1;
+
+          tree.push(node);
+        }
+
+        resolve(node);
+      }, delay);
+    });
+  }
   //
   // static deleteCourse(courseId) {
   //   return new Promise((resolve, reject) => {
