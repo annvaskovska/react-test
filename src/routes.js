@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router-dom';
 import App from './app/components/App';
 import AboutPage from './app/components/about/AboutPage';
 import CoursesPage from './app/components/course/CoursesPage';
@@ -13,8 +13,7 @@ import SettingsPage from './app/components/settings/SettingsPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={ApplicationsPage}/>
-    <Route path="applications" component={ApplicationsPage}/>
-    <Route path="applications/:id" component={ApplicationsPage}/>
+    <Route path={"applications"} component={ApplicationsPage}/>
     <Route path="monitoring" component={MonitoringPage}/>
     <Route path="reporting" component={ReportingPage}/>
     <Route path="unmanaged-buckets" component={UnmanagedBuckets}/>
@@ -28,3 +27,4 @@ export default (
 );
 
 
+//<Route path="applications/:id" component={ApplicationsPage}/>

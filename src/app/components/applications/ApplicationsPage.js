@@ -1,9 +1,11 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Tree from '../../infrastructure/tree/Tree';
 import NodeContent from './NodeContent';
 import {bindActionCreators} from 'redux';
 import * as treeActions from '../../../redux/actions/treeActions';
+import {Route} from 'react-router-dom';
 
 class ApplicationsPage extends React.Component {
   constructor(props, context) {
@@ -23,7 +25,7 @@ class ApplicationsPage extends React.Component {
           <Tree treeModel={this.props.tree} onSelect={this.onSelect}/>
         </aside>
         <section>
-          <NodeContent/>
+          <Route path={`applications/:id`} component={NodeContent}/>
         </section>
       </div>
     );
@@ -31,6 +33,7 @@ class ApplicationsPage extends React.Component {
 }
 
 ApplicationsPage.propTypes = {
+  match: PropTypes.object,
   actions: PropTypes.object.isRequired,
   tree: PropTypes.array.isRequired
 };

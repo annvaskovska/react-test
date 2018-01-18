@@ -13,3 +13,14 @@ a.active {
 nav {
   padding-top: 20px;
 }
+
+aside {
+  float: left;
+  margin: 0 1.5%;
+  width: 30%;
+}
+section {
+  float: right;
+  margin: 0 1.5%;
+  width: 63%;
+}

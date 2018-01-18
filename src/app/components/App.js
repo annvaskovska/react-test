@@ -1,5 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './common/Header';
+import Main from './Main';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
@@ -7,14 +9,13 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Header loading={this.props.loading}/>
-        {this.props.children}
+        <Main/>
       </div>
     );
   }
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 };
 

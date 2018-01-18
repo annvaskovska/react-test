@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 //import TreeNode from './TreeNode';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 const Tree = ({treeModel, onSelect}) => {
   return (
