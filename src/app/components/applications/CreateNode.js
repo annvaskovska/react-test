@@ -13,6 +13,7 @@ class CreateNode extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   onChange(event) {
