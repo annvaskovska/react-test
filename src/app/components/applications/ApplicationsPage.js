@@ -5,7 +5,7 @@ import Tree from '../../infrastructure/tree/Tree';
 import NodeContent from './NodeContent';
 import {bindActionCreators} from 'redux';
 import * as treeActions from '../../../redux/actions/treeActions';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 class ApplicationsPage extends React.Component {
   constructor(props, context) {
@@ -14,7 +14,7 @@ class ApplicationsPage extends React.Component {
     this.onSelect = this.onSelect.bind(this);
   }
 
-  onSelect (node) {
+  onSelect(node) {
     this.props.actions.selectNode(node);
   }
 
@@ -25,7 +25,10 @@ class ApplicationsPage extends React.Component {
           <Tree treeModel={this.props.tree} onSelect={this.onSelect}/>
         </aside>
         <section>
-          <Route path={`${this.props.match.url}/:id`} component={NodeContent}/>
+          <Switch>
+            <Route exact path="/" render={() => <h4>No node selected</h4>}/>
+            <Route path={`${this.props.match.url}/:id`} component={NodeContent}/>
+          </Switch>
         </section>
       </div>
     );

@@ -25,7 +25,7 @@ class NodeContent extends React.Component {
     }
   }
 
-  onSave (nodeName) {
+  onSave(nodeName) {
     this.props.actions.saveNode({
       name: nodeName,
       level: this.state.nodeInfo.level,
@@ -37,7 +37,7 @@ class NodeContent extends React.Component {
       });
   }
 
-  updateCourseState (event) {
+  updateCourseState(event) {
     const field = event.target.name;
     let course = this.state.course;
     course[field] = event.target.value;
@@ -48,19 +48,24 @@ class NodeContent extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-5">
-            <h4><b>{this.props.nodeInfo.name}</b></h4>
+            <h4>
+              {this.props.nodeInfo.level == 1 && <span className="glyphicon glyphicon-equalizer ico"></span>}
+              {this.props.nodeInfo.level == 2 && <span className="glyphicon glyphicon-tasks ico"></span>}
+              {this.props.nodeInfo.level == 3 && <span className="glyphicon glyphicon-trash ico"></span>}
+              <strong>{this.props.nodeInfo.name}</strong>
+            </h4>
           </div>
           <div className="col-md-7">
-              <Link to={`${this.props.match.url}/create-bucket`}
-                    className="btn btn-primary btn-sm pull-right"
-                    disabled={this.props.nodeInfo.level != 2}>
-                Create Bucket
-              </Link>
-              <Link to={`${this.props.match.url}/create-node`}
-                    className="btn btn-primary btn-sm pull-right"
-                    disabled={this.props.nodeInfo.level > 1}>
-                Create Node
-              </Link>
+            <Link to={`${this.props.match.url}/create-bucket`}
+                  className="btn btn-primary btn-sm pull-right"
+                  disabled={this.props.nodeInfo.level != 2}>
+              Create Bucket
+            </Link>
+            <Link to={`${this.props.match.url}/create-node`}
+                  className="btn btn-primary btn-sm pull-right"
+                  disabled={this.props.nodeInfo.level > 1}>
+              Create Node
+            </Link>
           </div>
 
         </div>
@@ -117,4 +122,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps )(NodeContent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NodeContent));
