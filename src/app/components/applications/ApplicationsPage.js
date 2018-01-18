@@ -25,7 +25,7 @@ class ApplicationsPage extends React.Component {
           <Tree treeModel={this.props.tree} onSelect={this.onSelect}/>
         </aside>
         <section>
-          <Route path={`applications/:id`} component={NodeContent}/>
+          <Route path={`${this.props.match.url}/:id`} component={NodeContent}/>
         </section>
       </div>
     );

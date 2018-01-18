@@ -10,6 +10,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={ApplicationsPage}/>
+      <Route path="/applications" component={ApplicationsPage}/>
       <Route path="/monitoring" component={MonitoringPage}/>
       <Route path="/reporting" component={ReportingPage}/>
       <Route path="/unmanaged-buckets" component={UnmanagedBuckets}/>
