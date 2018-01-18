@@ -26,7 +26,7 @@ class ApplicationsPage extends React.Component {
         </aside>
         <section>
           <Switch>
-            <Route exact path="/" render={() => <h4>No node selected</h4>}/>
+            <Route exact path="/" render={() => <h5>No node selected</h5>}/>
             <Route path={`${this.props.match.url}/:id`} component={NodeContent}/>
           </Switch>
         </section>

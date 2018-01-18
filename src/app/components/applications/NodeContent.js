@@ -48,12 +48,12 @@ class NodeContent extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-5">
-            <h4>
+            <h5>
               {this.props.nodeInfo.level == 1 && <span className="glyphicon glyphicon-equalizer ico"></span>}
               {this.props.nodeInfo.level == 2 && <span className="glyphicon glyphicon-tasks ico"></span>}
               {this.props.nodeInfo.level == 3 && <span className="glyphicon glyphicon-trash ico"></span>}
               <strong>{this.props.nodeInfo.name}</strong>
-            </h4>
+            </h5>
           </div>
           <div className="col-md-7">
             <Link to={`${this.props.match.url}/create-bucket`}
