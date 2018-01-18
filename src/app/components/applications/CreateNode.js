@@ -36,7 +36,7 @@ class CreateNode extends React.Component {
     return (
       <form>
         <div>
-          <p>{`You are creating NODE for ${this.props.nodeInfo.name}`}</p>
+          <p>{`You are creating ${this.props.nodeType} for ${this.props.nodeInfo.name}`}</p>
           <TextInput
             name="nodeName"
             title="Name"
@@ -57,7 +57,8 @@ class CreateNode extends React.Component {
 CreateNode.propTypes = {
   history: PropTypes.object,
   nodeInfo: PropTypes.object,
-  onSave: PropTypes.func.isRequired
+  onSave: PropTypes.func.isRequired,
+  nodeType: PropTypes.string.isRequired
 };
 
 export default CreateNode;

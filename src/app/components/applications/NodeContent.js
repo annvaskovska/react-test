@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Route, Link, withRouter} from 'react-router-dom';
 import CreateNode from './CreateNode';
-import CreateBucket from './CreateBucket';
 import * as treeActions from '../../../redux/actions/treeActions';
 import _ from 'lodash';
 
@@ -54,12 +53,12 @@ class NodeContent extends React.Component {
           <div className="col-md-7">
               <Link to={`${this.props.match.url}/create-bucket`}
                     className="btn btn-primary btn-sm pull-right"
-                    disabled={this.props.nodeInfo.level < 3}>
+                    disabled={this.props.nodeInfo.level != 2}>
                 Create Bucket
               </Link>
               <Link to={`${this.props.match.url}/create-node`}
                     className="btn btn-primary btn-sm pull-right"
-                    disabled={this.props.nodeInfo.level == 3}>
+                    disabled={this.props.nodeInfo.level > 1}>
                 Create Node
               </Link>
           </div>
@@ -67,9 +66,17 @@ class NodeContent extends React.Component {
         </div>
 
         <div>
-          <Route path={`${this.props.match.url}/create-bucket`} component={CreateBucket}/>
+          <Route path={`${this.props.match.url}/create-bucket`} render={(props) =>
+            <CreateNode
+              nodeType={'BUCKET'}
+              onSave={this.onSave}
+              onChange={this.updateCourseState}
+              nodeInfo={this.state.nodeInfo}
+              history={props.history}/>
+          }/>
           <Route path={`${this.props.match.url}/create-node`} render={(props) =>
             <CreateNode
+              nodeType={'NODE'}
               onSave={this.onSave}
               onChange={this.updateCourseState}
               nodeInfo={this.state.nodeInfo}
