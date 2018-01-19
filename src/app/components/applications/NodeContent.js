@@ -58,21 +58,18 @@ class NodeContent extends React.Component {
             </h5>
           </div>
           <div className="col-md-7">
-            <Link to={`${this.props.match.url}/create-bucket`}
-                  className="btn btn-primary btn-sm pull-right"
-                  disabled={this.props.nodeInfo.level != 2}>
+            {this.props.nodeInfo.level === "2" && <Link to={`${this.props.match.url}/create-bucket`}
+                                                        className="btn btn-primary btn-sm pull-right">
               Create Bucket
-            </Link>
-            <Link to={`${this.props.match.url}/create-node`}
-                  className="btn btn-primary btn-sm pull-right"
-                  disabled={this.props.nodeInfo.level > 1}>
+            </Link>}
+            {this.props.nodeInfo.level === "1" && <Link to={`${this.props.match.url}/create-node`}
+                                                    className="btn btn-primary btn-sm pull-right">
               Create Node
-            </Link>
-            <Link to={`${this.props.match.url}/bucket-settings`}
-                  className="btn btn-primary btn-sm pull-right"
-                  disabled={this.props.nodeInfo.level != 3}>
+            </Link>}
+            {this.props.nodeInfo.level === "3" && <Link to={`${this.props.match.url}/bucket-settings`}
+                                                        className="btn btn-primary btn-sm pull-right">
               Settings
-            </Link>
+            </Link>}
           </div>
 
         </div>
