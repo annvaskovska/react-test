@@ -18,6 +18,21 @@ class BucketSettings extends React.Component {
       nodeInfoCopy: Object.assign({}, this.props.nodeInfo)
     };
 
+    this.encriptionTypes = [
+      {
+        id: 1,
+        name: "None"
+      },
+      {
+        id: 2,
+        name: "Option 1"
+      },
+      {
+        id: 3,
+        name: "Option 2"
+      }
+    ];
+
     this.onChange = this.onChange.bind(this);
     this.save = this.save.bind(this);
     this.cancel = this.cancel.bind(this);
@@ -73,6 +88,24 @@ class BucketSettings extends React.Component {
           defaultOption={this.state.nodeInfo.retentionTimeName}
           options={this.props.retentionTimeList}
           onChange={this.onChange}/>
+
+        <b>Encription</b>
+        {
+          this.encriptionTypes.map((type) => {
+            return (
+              <div className="radio" key={type.id}>
+                <label><input
+                  type="radio"
+                  name="encriptionId"
+                  value={type.id}
+                  checked={type.id == this.state.nodeInfo.encriptionId}
+                  onChange={this.onChange}/>
+                  {type.name}
+                </label>
+              </div>
+            );
+          })
+        }
 
         <button className="btn btn-sm btn-success" onClick={this.save}>Save</button>
         <button className="btn btn-sm btn-warning" onClick={this.cancel}>Cancel</button>

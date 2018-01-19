@@ -24,7 +24,8 @@ const tree = [
     name: "WS1001",
     frequencyId: "1",
     dataCenterId: "2",
-    retentionTimeId: "3"
+    retentionTimeId: "3",
+    encriptionId: "1"
   },
   {
     id: "4",
@@ -33,7 +34,8 @@ const tree = [
     name: "WS1002",
     frequencyId: "1",
     dataCenterId: "2",
-    retentionTimeId: "3"
+    retentionTimeId: "3",
+    encriptionId: "1"
   },
   {
     id: "5",
@@ -48,7 +50,8 @@ const tree = [
     name: "WS2001",
     frequencyId: "1",
     dataCenterId: "2",
-    retentionTimeId: "3"
+    retentionTimeId: "3",
+    encriptionId: "1"
   },
   {
     id: "7",
@@ -69,7 +72,8 @@ const tree = [
     name: "S3-DB blabla",
     frequencyId: "1",
     dataCenterId: "2",
-    retentionTimeId: "3"
+    retentionTimeId: "3",
+    encriptionId: "1"
   }
 ];
 
