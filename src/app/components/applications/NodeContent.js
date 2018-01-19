@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Route, Link, withRouter} from 'react-router-dom';
 import CreateNode from './CreateNode';
+import BucketSettings from './BucketSettings';
 import * as treeActions from '../../../redux/actions/treeActions';
 import _ from 'lodash';
 
@@ -16,7 +17,7 @@ class NodeContent extends React.Component {
     };
 
     this.onSave = this.onSave.bind(this);
-    this.updateCourseState = this.updateCourseState.bind(this);
+    this.updateSettings = this.updateSettings.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,10 +38,8 @@ class NodeContent extends React.Component {
       });
   }
 
-  updateCourseState(event) {
-    const field = event.target.name;
-    let course = this.state.course;
-    course[field] = event.target.value;
+  updateSettings () {
+
   }
 
   render() {
@@ -66,6 +65,11 @@ class NodeContent extends React.Component {
                   disabled={this.props.nodeInfo.level > 1}>
               Create Node
             </Link>
+            <Link to={`${this.props.match.url}/bucket-settings`}
+                  className="btn btn-primary btn-sm pull-right"
+                  disabled={this.props.nodeInfo.level != 3}>
+              Settings
+            </Link>
           </div>
 
         </div>
@@ -75,7 +79,6 @@ class NodeContent extends React.Component {
             <CreateNode
               nodeType={'BUCKET'}
               onSave={this.onSave}
-              onChange={this.updateCourseState}
               nodeInfo={this.state.nodeInfo}
               history={props.history}/>
           }/>
@@ -83,10 +86,15 @@ class NodeContent extends React.Component {
             <CreateNode
               nodeType={'NODE'}
               onSave={this.onSave}
-              onChange={this.updateCourseState}
               nodeInfo={this.state.nodeInfo}
               history={props.history}/>
           }/>
+          {this.props.nodeInfo.isLeaf && <Route path={`${this.props.match.url}/bucket-settings`} render={(props) =>
+            <BucketSettings
+              onSave={this.updateSettings}
+              nodeInfo={this.state.nodeInfo}
+              history={props.history}/>
+          }/>}
         </div>
       </div>
     );

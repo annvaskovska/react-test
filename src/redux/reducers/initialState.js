@@ -5,5 +5,8 @@ export default {
   applications: {
     tree: [],
     selectedNode: {}
+  },
+  dictionaries: {
+    frequencyList: []
   }
 };

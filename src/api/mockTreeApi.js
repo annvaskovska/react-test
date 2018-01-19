@@ -21,13 +21,15 @@ const tree = [
     id: "3",
     isLeaf: "true",
     level: "3",
-    name: "WS1001"
+    name: "WS1001",
+    frequencyId: "1"
   },
   {
     id: "4",
     isLeaf: "true",
     level: "3",
-    name: "WS1002"
+    name: "WS1002",
+    frequencyId: "1"
   },
   {
     id: "5",
@@ -39,7 +41,8 @@ const tree = [
     id: "6",
     isLeaf: "true",
     level: "3",
-    name: "WS2001"
+    name: "WS2001",
+    frequencyId: "1"
   },
   {
     id: "7",
@@ -57,7 +60,8 @@ const tree = [
     id: "9",
     isLeaf: "true",
     level: "3",
-    name: "S3-DB blabla"
+    name: "S3-DB blabla",
+    frequencyId: "1"
   }
 ];
 
@@ -106,6 +110,7 @@ class TreeApi {
       }, delay);
     });
   }
+
   //
   // static deleteCourse(courseId) {
   //   return new Promise((resolve, reject) => {
