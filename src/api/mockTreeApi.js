@@ -115,6 +115,15 @@ class TreeApi {
           node.id = _.random(1000).toString();
           node.level = Number(node.parentLevel) + 1;
 
+          if (node.level === 3) {
+            Object.assign(node, {
+              frequencyId: "1",
+              dataCenterId: "2",
+              retentionTimeId: "3",
+              encriptionId: "1"
+            });
+          }
+
           tree.push(node);
         }
 

@@ -8,6 +8,8 @@ import BucketSettings from './BucketSettings';
 import * as treeActions from '../../../redux/actions/treeActions';
 import _ from 'lodash';
 
+import toastr from 'toastr';
+
 class NodeContent extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -34,12 +36,13 @@ class NodeContent extends React.Component {
       parentLevel: this.state.nodeInfo.level
     })
       .then(() => {
+        toastr.success('Successfully Saved');
         this.context.router.history.goBack();
       });
   }
 
-  updateSettings () {
-
+  updateSettings() {
+    toastr.success('Successfully Updated');
   }
 
   render() {
@@ -89,12 +92,12 @@ class NodeContent extends React.Component {
               nodeInfo={this.state.nodeInfo}
               history={props.history}/>
           }/>
-          {this.props.nodeInfo.isLeaf && <Route path={`${this.props.match.url}/bucket-settings`} render={(props) =>
+          <Route path={`${this.props.match.url}/bucket-settings`} render={(props) =>
             <BucketSettings
               onSave={this.updateSettings}
               nodeInfo={this.state.nodeInfo}
               history={props.history}/>
-          }/>}
+          }/>
         </div>
       </div>
     );

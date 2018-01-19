@@ -20,15 +20,15 @@ class BucketSettings extends React.Component {
 
     this.encriptionTypes = [
       {
-        id: 1,
+        id: "1",
         name: "None"
       },
       {
-        id: 2,
+        id: "2",
         name: "Option 1"
       },
       {
-        id: 3,
+        id: "3",
         name: "Option 2"
       }
     ];

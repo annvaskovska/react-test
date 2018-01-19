@@ -23,6 +23,10 @@ nav a:hover {
   color: orange;
 }
 
+a[disabled] {
+  pointer-events: none;
+}
+
 nav {
   padding-top: 20px;
 }
