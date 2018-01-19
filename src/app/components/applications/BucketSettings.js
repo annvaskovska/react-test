@@ -61,7 +61,7 @@ class BucketSettings extends React.Component {
           title="Data Center"
           label="Data Center"
           value={this.state.nodeInfo.dataCenterId}
-          defaultOption={this.state.nodeInfo.dataCentersList}
+          defaultOption={this.state.nodeInfo.dataCenterName}
           options={this.props.dataCentersList}
           onChange={this.onChange}/>
 
@@ -70,7 +70,7 @@ class BucketSettings extends React.Component {
           title="Retention Time"
           label="Retention Time"
           value={this.state.nodeInfo.retentionTimeId}
-          defaultOption={this.state.nodeInfo.retentionTimeId}
+          defaultOption={this.state.nodeInfo.retentionTimeName}
           options={this.props.retentionTimeList}
           onChange={this.onChange}/>
 
@@ -105,7 +105,7 @@ function mapStateToProps(state, ownProps) {
   }
 
   if (state.dictionaries.retentionTimeList.length > 0) {
-    nodeInfo.dataCenterName = _.find(state.dictionaries.retentionTimeList, {id: nodeInfo.retentionTimeId}).name;
+    nodeInfo.retentionTimeName = _.find(state.dictionaries.retentionTimeList, {id: nodeInfo.retentionTimeId}).name;
   }
 
   return {
