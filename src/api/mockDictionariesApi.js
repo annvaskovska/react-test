@@ -19,6 +19,25 @@ const frequency = [
   }
 ];
 
+const retentionTime = [
+  {
+    id: "1",
+    name: "Option 1"
+  },
+  {
+    id: "2",
+    name: "Option 2"
+  },
+  {
+    id: "3",
+    name: "Option 3"
+  },
+  {
+    id: "4",
+    name: "Option 4"
+  }
+];
+
 const dataCenters = [
   {
     id: "1",
@@ -67,6 +86,14 @@ class DictionariesApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], dataCenters));
+      }, delay);
+    });
+  }
+
+  static getRetentionTime() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], retentionTime));
       }, delay);
     });
   }

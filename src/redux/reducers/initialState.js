@@ -8,6 +8,7 @@ export default {
   },
   dictionaries: {
     frequencyList: [],
-    dataCentersList: []
+    dataCentersList: [],
+    retentionTimeList: []
   }
 };

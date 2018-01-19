@@ -11,6 +11,7 @@ class BucketSettings extends React.Component {
     super(props, context);
     this.props.actions.loadFrequencyDictionary();
     this.props.actions.loadDataCentersDictionary();
+    this.props.actions.loadRetentionTimeDictionary();
 
     this.state = {
       nodeInfo: Object.assign({}, this.props.nodeInfo),
@@ -64,6 +65,14 @@ class BucketSettings extends React.Component {
           options={this.props.dataCentersList}
           onChange={this.onChange}/>
 
+        <SelectInput
+          name="retentionTimeId"
+          title="Retention Time"
+          label="Retention Time"
+          value={this.state.nodeInfo.retentionTimeId}
+          defaultOption={this.state.nodeInfo.retentionTimeId}
+          options={this.props.retentionTimeList}
+          onChange={this.onChange}/>
 
         <button className="btn btn-sm btn-success" onClick={this.save}>Save</button>
         <button className="btn btn-sm btn-warning" onClick={this.cancel}>Cancel</button>
@@ -80,7 +89,8 @@ BucketSettings.propTypes = {
   nodeInfoCopy: PropTypes.object,
   onSave: PropTypes.func.isRequired,
   frequencyList: PropTypes.array.isRequired,
-  dataCentersList: PropTypes.array.isRequired
+  dataCentersList: PropTypes.array.isRequired,
+  retentionTimeList: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -94,10 +104,15 @@ function mapStateToProps(state, ownProps) {
     nodeInfo.dataCenterName = _.find(state.dictionaries.dataCentersList, {id: nodeInfo.dataCenterId}).name;
   }
 
+  if (state.dictionaries.retentionTimeList.length > 0) {
+    nodeInfo.dataCenterName = _.find(state.dictionaries.retentionTimeList, {id: nodeInfo.retentionTimeId}).name;
+  }
+
   return {
     nodeInfo,
     frequencyList: state.dictionaries.frequencyList,
-    dataCentersList: state.dictionaries.dataCentersList
+    dataCentersList: state.dictionaries.dataCentersList,
+    retentionTimeList: state.dictionaries.retentionTimeList
   };
 }
 
