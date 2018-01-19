@@ -22,14 +22,16 @@ const tree = [
     isLeaf: "true",
     level: "3",
     name: "WS1001",
-    frequencyId: "1"
+    frequencyId: "1",
+    dataCenterId: "2"
   },
   {
     id: "4",
     isLeaf: "true",
     level: "3",
     name: "WS1002",
-    frequencyId: "1"
+    frequencyId: "1",
+    dataCenterId: "2"
   },
   {
     id: "5",
@@ -42,7 +44,8 @@ const tree = [
     isLeaf: "true",
     level: "3",
     name: "WS2001",
-    frequencyId: "1"
+    frequencyId: "1",
+    dataCenterId: "2"
   },
   {
     id: "7",
@@ -61,7 +64,8 @@ const tree = [
     isLeaf: "true",
     level: "3",
     name: "S3-DB blabla",
-    frequencyId: "1"
+    frequencyId: "1",
+    dataCenterId: "2"
   }
 ];
 

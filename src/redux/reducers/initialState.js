@@ -7,6 +7,7 @@ export default {
     selectedNode: {}
   },
   dictionaries: {
-    frequencyList: []
+    frequencyList: [],
+    dataCentersList: []
   }
 };

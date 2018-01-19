@@ -10,6 +10,7 @@ class BucketSettings extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.props.actions.loadFrequencyDictionary();
+    this.props.actions.loadDataCentersDictionary();
 
     this.state = {
       nodeInfo: Object.assign({}, this.props.nodeInfo),
@@ -47,12 +48,22 @@ class BucketSettings extends React.Component {
       <form>
         <SelectInput
           name="frequencyId"
-          title="Backuo Frequency"
-          label="Backuo Frequency"
+          title="Backup Frequency"
+          label="Backup Frequency"
           value={this.state.nodeInfo.frequencyId}
           defaultOption={this.state.nodeInfo.frequencyName}
           options={this.props.frequencyList}
           onChange={this.onChange}/>
+
+        <SelectInput
+          name="dataCenterId"
+          title="Data Center"
+          label="Data Center"
+          value={this.state.nodeInfo.dataCenterId}
+          defaultOption={this.state.nodeInfo.dataCentersList}
+          options={this.props.dataCentersList}
+          onChange={this.onChange}/>
+
 
         <button className="btn btn-sm btn-success" onClick={this.save}>Save</button>
         <button className="btn btn-sm btn-warning" onClick={this.cancel}>Cancel</button>
@@ -68,7 +79,8 @@ BucketSettings.propTypes = {
   nodeInfo: PropTypes.object,
   nodeInfoCopy: PropTypes.object,
   onSave: PropTypes.func.isRequired,
-  frequencyList: PropTypes.array.isRequired
+  frequencyList: PropTypes.array.isRequired,
+  dataCentersList: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -78,9 +90,14 @@ function mapStateToProps(state, ownProps) {
     nodeInfo.frequencyName = _.find(state.dictionaries.frequencyList, {id: nodeInfo.frequencyId}).name;
   }
 
+  if (state.dictionaries.dataCentersList.length > 0) {
+    nodeInfo.dataCenterName = _.find(state.dictionaries.dataCentersList, {id: nodeInfo.dataCenterId}).name;
+  }
+
   return {
     nodeInfo,
-    frequencyList: state.dictionaries.frequencyList
+    frequencyList: state.dictionaries.frequencyList,
+    dataCentersList: state.dictionaries.dataCentersList
   };
 }
 

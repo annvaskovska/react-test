@@ -19,7 +19,6 @@ const SelectInput = ({name, label, placeholder, onChange, options, defaultOption
             })
           }
         </select>
-        {errors & <div className="alert alert-danger">{errors}</div>}
       </div>
     </div>
   );
