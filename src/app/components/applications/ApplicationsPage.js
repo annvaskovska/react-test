@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Tree from '../../infrastructure/tree/Tree';
+import Tree from '../../infrastructure/Tree';
 import NodeContent from './NodeContent';
 import {bindActionCreators} from 'redux';
 import * as treeActions from '../../../redux/actions/treeActions';
