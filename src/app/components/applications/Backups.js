@@ -11,24 +11,28 @@ class Backups extends React.Component {
 
     this.backups = [
       {
+        id: 1,
         backupDate: new Date().toDateString(),
         createdAgo: 13,
         objectsCount: 234,
         size: 4
       },
       {
+        id: 2,
         backupDate: new Date().toDateString(),
         createdAgo: 13,
         objectsCount: 656,
         size: 34
       },
       {
+        id: 3,
         backupDate: new Date().toDateString(),
         createdAgo: 13,
         objectsCount: 4567,
         size: 64
       },
       {
+        id: 4,
         backupDate: new Date().toDateString(),
         createdAgo: 13,
         objectsCount: 457,
@@ -36,7 +40,7 @@ class Backups extends React.Component {
       }
     ];
 
-    this.columns = _.keys(_.head(this.backups));
+    this.columns = ['backupDate', 'createdAgo', 'objectsCount', 'size'];
     this.headers = ['Backups', 'Created', 'Objects', 'Size'];
   }
 
