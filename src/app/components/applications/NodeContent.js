@@ -9,6 +9,7 @@ import * as treeActions from '../../../redux/actions/treeActions';
 import _ from 'lodash';
 
 import toastr from 'toastr';
+import Backups from './Backups';
 
 class NodeContent extends React.Component {
   constructor(props, context) {
@@ -72,6 +73,11 @@ class NodeContent extends React.Component {
             </Link>}
           </div>
 
+        </div>
+        <div className="row">
+          {
+            this.props.nodeInfo.level == 3 && <Backups/>
+          }
         </div>
 
         <div>
