@@ -145,15 +145,15 @@ function getChildren(levelData, treeData, recursive = false) {
 
 function mapStateToProps(state, ownProps) {
   const selectedNodeId = ownProps.match.params.id;
-  let selectedNode = state.tree.selectedNode;
+  let selectedNode = state.applications.selectedNode;
 
-  if (_.isEmpty(selectedNode) && !_.isEmpty(selectedNodeId) && state.tree.tree.length > 0) {
-    selectedNode = _.find(state.tree.tree, {id: selectedNodeId});
+  if (_.isEmpty(selectedNode) && !_.isEmpty(selectedNodeId) && state.applications.tree.length > 0) {
+    selectedNode = _.find(state.applications.tree, {id: selectedNodeId});
   }
 
   return {
     nodeInfo: selectedNode,
-    tree: state.tree.tree
+    tree: state.applications.tree
   };
 }
 

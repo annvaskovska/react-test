@@ -49,10 +49,9 @@ ApplicationsPage.propTypes = {
   tree: PropTypes.array.isRequired
 };
 
-//TODO: state.tree.tree WTF
 function mapStateToProps(state, ownProps) {
   return {
-    tree: state.tree.tree
+    tree: state.applications.tree
   };
 }
 
