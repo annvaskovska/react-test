@@ -22,6 +22,14 @@ class ApplicationsPage extends React.Component {
     return (
       <div>
         <aside>
+          <div className="input-group">
+            <span className="input-group-btn">
+              <button className="btn btn-default" type="button">
+                <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </span>
+            <input type="text" className="form-control" placeholder="Search for..."/>
+          </div>
           <Tree treeModel={this.props.tree} onSelect={this.onSelect}/>
         </aside>
         <section>
