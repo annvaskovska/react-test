@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Route, Link, withRouter} from 'react-router-dom';
+import {Switch, Route, Link, withRouter} from 'react-router-dom';
 import CreateNode from './CreateNode';
 import BucketSettings from './BucketSettings';
 import * as treeActions from '../../../redux/actions/treeActions';
 import _ from 'lodash';
+import Tree from '../../infrastructure/Tree';
 
 import toastr from 'toastr';
 import Backups from './Backups';
@@ -20,6 +21,7 @@ class NodeContent extends React.Component {
     };
 
     this.onSave = this.onSave.bind(this);
+    this.onSelect = this.onSelect.bind(this);
     this.updateSettings = this.updateSettings.bind(this);
   }
 
@@ -27,6 +29,10 @@ class NodeContent extends React.Component {
     if (this.state.nodeInfo.id !== nextProps.nodeInfo.id) {
       this.setState({nodeInfo: Object.assign({}, nextProps.nodeInfo)});
     }
+  }
+
+  onSelect(node) {
+    this.props.actions.selectNode(node);
   }
 
   onSave(nodeName) {
@@ -64,7 +70,7 @@ class NodeContent extends React.Component {
               Create Bucket
             </Link>}
             {this.props.nodeInfo.level === "1" && <Link to={`${this.props.match.url}/create-node`}
-                                                    className="btn btn-primary btn-sm pull-right">
+                                                        className="btn btn-primary btn-sm pull-right">
               Create Node
             </Link>}
             {this.props.nodeInfo.level === "3" && <Link to={`${this.props.match.url}/bucket-settings`}
@@ -72,35 +78,36 @@ class NodeContent extends React.Component {
               Settings
             </Link>}
           </div>
-
-        </div>
-        <div className="row">
-          {
-            this.props.nodeInfo.level == 3 && <Backups/>
-          }
         </div>
 
         <div>
-          <Route path={`${this.props.match.url}/create-bucket`} render={(props) =>
-            <CreateNode
-              nodeType={'BUCKET'}
-              onSave={this.onSave}
-              nodeInfo={this.state.nodeInfo}
-              history={props.history}/>
-          }/>
-          <Route path={`${this.props.match.url}/create-node`} render={(props) =>
-            <CreateNode
-              nodeType={'NODE'}
-              onSave={this.onSave}
-              nodeInfo={this.state.nodeInfo}
-              history={props.history}/>
-          }/>
-          <Route path={`${this.props.match.url}/bucket-settings`} render={(props) =>
-            <BucketSettings
-              onSave={this.updateSettings}
-              nodeInfo={this.state.nodeInfo}
-              history={props.history}/>
-          }/>
+          <Switch>
+            <Route exact path={`${this.props.match.url}`} render={() => {
+              return this.props.nodeInfo.level === "3"
+                ? <Backups/>
+                : <Tree treeModel={getChildren(this.props.nodeInfo, this.props.tree, true)} onSelect={this.onSelect}/>;
+            }}/>
+            <Route path={`${this.props.match.url}/create-bucket`} render={(props) =>
+              <CreateNode
+                nodeType={'BUCKET'}
+                onSave={this.onSave}
+                nodeInfo={this.state.nodeInfo}
+                history={props.history}/>
+            }/>
+            <Route path={`${this.props.match.url}/create-node`} render={(props) =>
+              <CreateNode
+                nodeType={'NODE'}
+                onSave={this.onSave}
+                nodeInfo={this.state.nodeInfo}
+                history={props.history}/>
+            }/>
+            <Route path={`${this.props.match.url}/bucket-settings`} render={(props) =>
+              <BucketSettings
+                onSave={this.updateSettings}
+                nodeInfo={this.state.nodeInfo}
+                history={props.history}/>
+            }/>
+          </Switch>
         </div>
       </div>
     );
@@ -110,12 +117,31 @@ class NodeContent extends React.Component {
 NodeContent.propTypes = {
   match: PropTypes.object,
   nodeInfo: PropTypes.object,
+  tree: PropTypes.array.isRequired,
   actions: PropTypes.object
 };
 
 NodeContent.contextTypes = {
   router: PropTypes.object
 };
+
+function getChildren(levelData, treeData, recursive = false) {
+  if (!levelData) {
+    return [];
+  }
+
+  const options = _.pickBy({id: levelData.id, type: levelData.type, path: levelData.path, label: levelData.label});
+  let levelIndex = _.findIndex(treeData, options) + 1;
+
+  const children = [];
+  while (levelIndex < treeData.length && treeData[levelIndex].level > levelData.level) {
+    if (recursive || _.isEqual(_.toNumber(treeData[levelIndex].level), _.toNumber(levelData.level) + 1)) {
+      children.push(treeData[levelIndex]);
+    }
+    levelIndex++;
+  }
+  return children;
+}
 
 function mapStateToProps(state, ownProps) {
   const selectedNodeId = ownProps.match.params.id;
@@ -126,7 +152,8 @@ function mapStateToProps(state, ownProps) {
   }
 
   return {
-    nodeInfo: selectedNode
+    nodeInfo: selectedNode,
+    tree: state.tree.tree
   };
 }
 
