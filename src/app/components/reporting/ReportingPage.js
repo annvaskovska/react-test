@@ -1,5 +1,3 @@
-import React from 'react';
-
 class ReportingPage extends React.Component {
   render () {
     return (

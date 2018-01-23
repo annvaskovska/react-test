@@ -1,12 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Switch, Route, Link, withRouter} from 'react-router-dom';
 import CreateNode from './CreateNode';
 import BucketSettings from './BucketSettings';
 import * as treeActions from '../../../redux/actions/treeActions';
-import _ from 'lodash';
+
 import Tree from '../../infrastructure/Tree';
 
 import toastr from 'toastr';

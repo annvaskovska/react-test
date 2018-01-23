@@ -1,5 +1,3 @@
-import React from 'react';
-
 class MonitoringPage extends React.Component {
   render () {
     return (

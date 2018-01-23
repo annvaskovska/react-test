@@ -21,6 +21,13 @@
     "jquery": true,
     "mocha": true
   },
+  "globals": {
+    "_": true,
+    "$": true,
+    "jQuery": true,
+    "React": true,
+    "PropTypes": true
+  },
   "rules": {
     "quotes": 0,
     "no-console": 1,

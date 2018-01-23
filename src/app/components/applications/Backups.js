@@ -1,5 +1,3 @@
-import _ from 'lodash';
-import React from 'react';
 import TableList from '../../infrastructure/Table/TableList';
 
 //import PropTypes from 'prop-types';

@@ -1,6 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 const SelectInput = ({name, label, placeholder, onChange, value, error}) => {
   return (
     <div className="form-group row">

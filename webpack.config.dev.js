@@ -21,7 +21,16 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      '_': 'lodash',
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'react': 'react',
+      'React': 'react',
+      'ReactDOM': 'react-dom',
+      'PropTypes': 'prop-types'
+    })
   ],
   module: {
     loaders: [

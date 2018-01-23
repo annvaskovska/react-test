@@ -1,5 +1,3 @@
-import React, { PropTypes} from 'react';
-
 const SelectInput = ({name, label, placeholder, onChange, options, defaultOption, value, errors}) => {
   return (
     <div className="form-group">

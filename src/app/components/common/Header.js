@@ -1,4 +1,3 @@
-import React, { PropTypes} from 'react';
 import { Link } from 'react-router-dom';
 import LoadingDots from './LoadingDots';
 

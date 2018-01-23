@@ -1,5 +1,3 @@
-import React from 'react';
-
 class UnmanagedBuckets extends React.Component {
   render () {
     return (
