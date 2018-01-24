@@ -23,7 +23,7 @@ class ApplicationsPage extends React.Component {
           <div className="input-group">
             <span className="input-group-btn">
               <button className="btn btn-default" type="button">
-                <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span className="glyphicon glyphicon-search" aria-hidden="true"/>
               </button>
             </span>
             <input type="text" className="form-control" placeholder="Search for..."/>

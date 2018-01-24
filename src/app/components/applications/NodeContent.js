@@ -56,9 +56,9 @@ class NodeContent extends React.Component {
         <div className="row">
           <div className="col-md-5">
             <h5>
-              {this.props.nodeInfo.level == 1 && <span className="glyphicon glyphicon-equalizer ico"></span>}
-              {this.props.nodeInfo.level == 2 && <span className="glyphicon glyphicon-tasks ico"></span>}
-              {this.props.nodeInfo.level == 3 && <span className="glyphicon glyphicon-trash ico"></span>}
+              {this.props.nodeInfo.level == 1 && <span className="glyphicon glyphicon-equalizer ico"/>}
+              {this.props.nodeInfo.level == 2 && <span className="glyphicon glyphicon-tasks ico"/>}
+              {this.props.nodeInfo.level == 3 && <span className="glyphicon glyphicon-trash ico"/>}
               <strong>{this.props.nodeInfo.name}</strong>
             </h5>
           </div>
