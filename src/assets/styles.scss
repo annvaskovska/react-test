@@ -8,27 +8,23 @@
 
 nav {
   margin-bottom: 10px;
-}
+  padding-top: 20px;
+  a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 5px 10px;
 
-nav a {
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 18px;
-  margin: 5px 10px;
-}
-
-nav a:hover {
-  color: orange;
+    &:hover {
+      color: orange;
+    }
+  }
 }
 
 a[disabled] {
   pointer-events: none;
-}
-
-nav {
-  padding-top: 20px;
 }
 
 aside {
@@ -41,9 +37,4 @@ section {
   float: right;
   margin: 0 1.5%;
   width: 63%;
-}
-
-.ico {
-  margin-right: 10px;
-  color: #003668;
 }

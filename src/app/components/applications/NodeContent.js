@@ -56,23 +56,20 @@ class NodeContent extends React.Component {
         <div className="row">
           <div className="col-md-5">
             <h5>
-              {this.props.nodeInfo.level == 1 && <span className="glyphicon glyphicon-equalizer ico"/>}
-              {this.props.nodeInfo.level == 2 && <span className="glyphicon glyphicon-tasks ico"/>}
-              {this.props.nodeInfo.level == 3 && <span className="glyphicon glyphicon-trash ico"/>}
               <strong>{this.props.nodeInfo.name}</strong>
             </h5>
           </div>
           <div className="col-md-7">
             {this.props.nodeInfo.level === "2" && <Link to={`${this.props.match.url}/create-bucket`}
-                                                        className="btn btn-primary btn-sm pull-right">
+                                                        className="btn btn-primary btn-sm">
               Create Bucket
             </Link>}
             {this.props.nodeInfo.level === "1" && <Link to={`${this.props.match.url}/create-node`}
-                                                        className="btn btn-primary btn-sm pull-right">
+                                                        className="btn btn-primary btn-sm">
               Create Node
             </Link>}
             {this.props.nodeInfo.level === "3" && <Link to={`${this.props.match.url}/bucket-settings`}
-                                                        className="btn btn-primary btn-sm pull-right">
+                                                        className="btn btn-primary btn-sm">
               Settings
             </Link>}
           </div>

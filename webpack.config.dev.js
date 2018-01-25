@@ -42,10 +42,10 @@ export default {
         include: path.join(__dirname, 'src'),
         use: ['babel']
       },
-      {
-        test: /(\.css)$/,
-        use: ['style', 'css']
-      },
+      // {
+      //   test: /(\.css)$/,
+      //   use: ['style', 'css']
+      // },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: 'file'
@@ -61,6 +61,10 @@ export default {
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: 'url?limit=10000&mimetype=image/svg+xml'
+      },
+      {
+        test:/\.(s*)css$/,
+        use:['style-loader','css-loader', 'sass-loader']
       }
     ]
   }
