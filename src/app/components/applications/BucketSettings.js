@@ -52,7 +52,7 @@ class BucketSettings extends React.Component {
   cancel(event) {
     event.preventDefault();
     this.setState({
-      nodeInfo: this.state.nodeInfoCopy
+      nodeInfo: Object.assign({}, this.state.nodeInfoCopy)
     });
   }
 
